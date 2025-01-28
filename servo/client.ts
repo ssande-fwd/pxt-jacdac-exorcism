@@ -96,6 +96,7 @@ namespace modules {
         //% value.min=0
         //% value.max=180
         setAngle(value: number) {
+            serial.writeLine('setAngle')
             this.internalSetAngle(value)
             this.internalSetContinuous(false)
         }
