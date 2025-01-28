@@ -169,12 +169,12 @@ namespace modules {
         //% block="%servo enabled"
         //% blockId=jacdac_servo_enabled___get
         //% weight=98
-        enabled(): boolean {
+        enabled(): string{
             this.run(0)
             this.start()
             const values = this._enabled.pauseUntilValues() as any[]
             this.run(0)
-            return !!values[0]
+            return 'enabled() ran'
         }
 
         /**
