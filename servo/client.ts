@@ -98,6 +98,7 @@ namespace modules {
         setAngle(value: number) {
             this.internalSetAngle(value)
             this.internalSetContinuous(false)
+            serial.writeLine('setAngle called')
         }
 
         private internalSetAngle(value: number) {
