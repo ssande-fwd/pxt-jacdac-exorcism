@@ -69,6 +69,7 @@ namespace modules {
             this.on(jacdac.CONNECT, () => {
                 this._minAngle.query()
                 this._maxAngle.query()
+                this.run(0)
             })
         }
 
@@ -98,7 +99,6 @@ namespace modules {
         setAngle(value: number) {
             this.internalSetAngle(value)
             this.internalSetContinuous(false)
-            serial.writeLine('setAngle called')
         }
 
         private internalSetAngle(value: number) {
