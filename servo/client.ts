@@ -23,7 +23,9 @@ namespace modules {
 
             this._angle = this.addRegister<[number]>(
                 jacdac.ServoReg.Angle,
-                jacdac.ServoRegPack.Angle
+                jacdac.ServoRegPack.Angle,
+                undefined,
+                [135]
             )
             this._enabled = this.addRegister<[boolean]>(
                 jacdac.ServoReg.Enabled,
