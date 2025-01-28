@@ -69,7 +69,6 @@ namespace modules {
             this.on(jacdac.CONNECT, () => {
                 this._minAngle.query()
                 this._maxAngle.query()
-                this.run(0)
             })
         }
 
