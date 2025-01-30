@@ -5,7 +5,7 @@ namespace modules {
      *
      * The `min_pulse/max_pulse` may be read-only if the servo is permanently affixed to its Jacdac controller.
      **/
-    //% fixedInstances blockGap=8
+        //% fixedInstances blockGap=8
     export class ServoClient extends jacdac.SimpleSensorClient {
         private readonly _angle: jacdac.RegisterClient<[number]>
         private readonly _enabled: jacdac.RegisterClient<[boolean]>
@@ -57,13 +57,13 @@ namespace modules {
                 jacdac.ServoReg.StallTorque,
                 jacdac.ServoRegPack.StallTorque,
                 jacdac.RegisterClientFlags.Optional |
-                    jacdac.RegisterClientFlags.Const
+                jacdac.RegisterClientFlags.Const
             )
             this._responseSpeed = this.addRegister<[number]>(
                 jacdac.ServoReg.ResponseSpeed,
                 jacdac.ServoRegPack.ResponseSpeed,
                 jacdac.RegisterClientFlags.Optional |
-                    jacdac.RegisterClientFlags.Const
+                jacdac.RegisterClientFlags.Const
             )
 
             this.on(jacdac.CONNECT, () => {
@@ -96,6 +96,7 @@ namespace modules {
         //% value.min=0
         //% value.max=180
         setAngle(value: number) {
+            console.log('setAngle triggered')
             this.internalSetAngle(value)
             this.internalSetContinuous(false)
         }
@@ -169,12 +170,10 @@ namespace modules {
         //% block="%servo enabled"
         //% blockId=jacdac_servo_enabled___get
         //% weight=98
-        enabled(): string{
-            this.run(0)
+        enabled(): boolean {
             this.start()
             const values = this._enabled.pauseUntilValues() as any[]
-            this.run(0)
-            return 'enabled() ran'
+            return !!values[0]
         }
 
         /**
