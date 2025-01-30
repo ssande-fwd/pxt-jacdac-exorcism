@@ -1,6 +1,6 @@
 {
     "name": "jacdac-pcmonitor",
-    "version": "1.9.39",
+    "version": "1.9.40",
     "description": "Measures PC monitor.",
     "files": [
         "constants.ts",
